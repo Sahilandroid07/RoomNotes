@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+        <variable
+            name="isProgress"
+            type="boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.ui.auth.LoginFragment">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/welcome_back"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAccess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/login_to_access_your_notes"
+            android:textColor="@color/grey"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/tvWelcome"
+            app:layout_constraintTop_toBottomOf="@id/tvWelcome" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginStart="10dp"
+            android:text="@string/_email"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/tvAccess"
+            app:layout_constraintTop_toBottomOf="@id/tvAccess" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/rounded_30r"
+            android:hint="@string/email"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="15dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvAccess"
+            app:layout_constraintTop_toBottomOf="@id/tvEmail" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/password"
+            android:textColor="@color/black"
+            android:layout_marginStart="10dp"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/etEmail"
+            app:layout_constraintTop_toBottomOf="@id/etEmail" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/rounded_30r"
+            android:hint="@string/pass"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="15dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/etEmail"
+            app:layout_constraintTop_toBottomOf="@id/tvPassword" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/ripple_effect"
+            android:backgroundTint="@color/black"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:onClick="@{listener::onClick}"
+            android:visibility="@{isProgress ? View.INVISIBLE : View.VISIBLE, default = visible}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etPassword" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/btnLogin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/don_t_have_an_account_register_now"
+            android:textColor="@color/grey"
+            android:textSize="14sp"
+            android:onClick="@{listener::onClick}"
+            android:layout_marginTop="20dp" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{isProgress ? View.VISIBLE : View.GONE, default = gone}"
+            app:layout_constraintTop_toTopOf="@id/btnLogin"
+            app:layout_constraintBottom_toBottomOf="@id/btnLogin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

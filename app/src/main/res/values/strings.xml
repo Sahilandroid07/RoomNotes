@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">RoomNotes</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="create_new_account">Create New Account</string>
+    <string name="email">learn@gmail.com</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="required_information">Please provide all the required information</string>
+    <string name="username">Username</string>
+    <string name="_email">Email</string>
+    <string name="password">Password</string>
+    <string name="pass">********</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="login_to_access_your_notes">Login to access your notes</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account_register_now">Don\'t have an account?<font color="#00BCD4"> Register Now</font></string>
+    <string name="notes">Notes</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="enter_title_hint">Enter title…</string>
+    <string name="enter_description_hint">Enter description…</string>
+    <string name="submit">Submit</string>
+    <string name="update">Update</string>
+    <string name="edit_note">Edit Note</string>
+    <string name="add_note">Add Note</string>
+    <string name="no_notes_yet_wanna_create_one_just_tap_on_add_button">No notes yet wanna create one just tap on add button</string>
+</resources>

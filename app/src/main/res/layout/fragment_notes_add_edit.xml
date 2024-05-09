@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="isProgress"
+            type="Boolean" />
+
+        <variable
+            name="note"
+            type="com.example.roomnotes.data.local.db.entities.Note" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.ui.home.NotesAddEditFragment">
+
+        <TextView
+            android:id="@+id/tvAdd_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{note != null ? @string/edit_note : @string/add_note, default = @string/edit_note}"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/ripple_effect"
+            android:onClick="@{listener::onClick}"
+            android:src="@drawable/ic_delete"
+            android:padding="7dp"
+            android:visibility="@{note != null ? View.VISIBLE : View.INVISIBLE, default = visible}"
+            app:layout_constraintBottom_toBottomOf="@id/tvAdd_edit_text"
+            app:layout_constraintTop_toTopOf="@id/tvAdd_edit_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="20dp" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/title"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAdd_edit_text" />
+
+        <EditText
+            android:id="@+id/etTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/rounded_30r"
+            android:hint="@string/enter_title_hint"
+            android:imeOptions="actionNext"
+            android:padding="20dp"
+            android:text='@{note != null ? note.title : "", default = ""}'
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etTitle" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/description"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view" />
+
+        <EditText
+            android:id="@+id/etDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/rounded_30r"
+            android:gravity="top|start"
+            android:hint="@string/enter_description_hint"
+            android:imeOptions="actionDone"
+            android:inputType="textMultiLine"
+            android:lines="10"
+            android:padding="20dp"
+            android:scrollbars="vertical"
+            android:scrollHorizontally="false"
+            android:text='@{note != null ? note.description : "", default = ""}'
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etDescription" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/ripple_effect"
+            android:backgroundTint="@color/black"
+            android:backgroundTintMode="add"
+            android:onClick="@{listener::onClick}"
+            android:text="@{note != null ? @string/update : @string/submit, default = @string/update}"
+            android:visibility="@{isProgress ? View.INVISIBLE : View.VISIBLE, default = visible}"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view2" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{isProgress ? View.VISIBLE : View.INVISIBLE, default = visible}"
+            app:layout_constraintBottom_toBottomOf="@id/btn_submit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btn_submit" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
